@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
+import DispatchContext from '../DispatchContext';
 
-const HeaderLoggedIn = ({ setLoggedIn }) => {
+
+const HeaderLoggedIn = () => {
+  const globalDispatch = useContext(DispatchContext);
   const handleLogout = () => {
-    setLoggedIn(false);
+    globalDispatch({ type: "logout" });
     localStorage.removeItem("complexappToken");
     localStorage.removeItem("complexappUsername");
     localStorage.removeItem("complexappAvatar");
